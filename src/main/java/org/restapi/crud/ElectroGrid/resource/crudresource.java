@@ -1,5 +1,8 @@
 package org.restapi.crud.ElectroGrid.resource;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import org.restapi.crud.ElectroGrid.model.crudmodel;
 import org.restapi.crud.ElectroGrid.service.crudservice;
 
@@ -18,6 +21,14 @@ public class crudresource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public crudmodel addUser(crudmodel user) {
 		return service.insertUser(user);
+	}
+	
+	@Path("/retrieve")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ArrayList<crudmodel> getUser() throws SQLException {
+		
+		return service.getUser();
 	}
 
 }

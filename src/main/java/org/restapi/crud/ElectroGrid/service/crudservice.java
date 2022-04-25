@@ -2,6 +2,7 @@ package org.restapi.crud.ElectroGrid.service;
 
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import org.restapi.crud.ElectroGrid.model.crudmodel;
 
@@ -42,6 +43,30 @@ public class crudservice {
 		
 		return user;
 	
+	}
+	
+	public ArrayList<crudmodel> getUser() throws SQLException{
+		
+		ArrayList<crudmodel> data = new ArrayList<crudmodel>();
+		
+		String select = "select * from user";
+
+		PreparedStatement ps = con.prepareStatement(select);
+		ResultSet rs = ps.executeQuery();
+		
+		while (rs.next()) {
+			crudmodel model = new crudmodel();
+			
+			model.setName(rs.getString("name"));
+			model.setEmail(rs.getString("email"));
+			model.setAddress(rs.getString("address"));
+			model.setPhoneno(rs.getString("phoneno"));
+			model.setType(rs.getString("type"));
+			
+			data.add(model);
+		}
+		
+		return data;
 	}
 	
 	
