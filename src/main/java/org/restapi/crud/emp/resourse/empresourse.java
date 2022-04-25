@@ -9,6 +9,7 @@ import org.restapi.crud.emp.service.empservice;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
@@ -41,4 +42,12 @@ public class empresourse {
 		
 		return service.getEmpById(empId);
 	}
+	
+	//update user details 
+		@Path("/updateEmp")
+		@PUT
+		@Consumes(MediaType.APPLICATION_JSON)
+		public empmodel updateEmp(empmodel emp) {
+			return service.updateEmp(emp);
+		}
 }

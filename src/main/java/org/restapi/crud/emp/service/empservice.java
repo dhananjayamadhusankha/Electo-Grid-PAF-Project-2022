@@ -1,10 +1,6 @@
 package org.restapi.crud.emp.service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import org.restapi.crud.emp.model.empmodel;
@@ -27,10 +23,14 @@ public class empservice {
 	}
 	
 public empmodel insertEmp (empmodel emp) {
+	
+	// create a prepared statement
 	String insert = "insert into employee (name, age, address, email, telno, type) values(?,?,?,?,?,?)";
 	
+	// binding values to user table
 	try {
 		PreparedStatement ps = con.prepareStatement(insert);
+		
 		ps.setString(1, emp.getName());
 		ps.setLong(2, emp.getAge());
 		ps.setString(3, emp.getAddress());
@@ -102,5 +102,35 @@ public empmodel insertEmp (empmodel emp) {
 			
 			return data;
 		}
+		
+	//Update the user details
+	public empmodel updateEmp (empmodel emp) {
+		
+		// create a prepared statement
+		String insert = "update employee set name=?, age=?, address=?, email=?, telno=?, type=? "
+				+ "where empId=?";
+				
+		// binding values to user table
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			
+			ps.setString(1, emp.getName());
+			ps.setLong(2, emp.getAge());
+			ps.setString(3, emp.getAddress());
+			ps.setString(4, emp.getEmail());
+			ps.setString(5, emp.getTelno());
+			ps.setString(6, emp.getType());
+			
+			// Execute the statement
+			ps.executeUpdate();
+			System.out.println("Successfully Updated!");
+
+		} catch (Exception e) {
+			System.out.println(e +"data update unsuccess.");
+		}
+		
+		return emp;
+	}
+			
 
 }
