@@ -121,6 +121,25 @@ public class crudservice {
 	
 	}
 	
+	public int deleteUser(int id) {
+		String insert = "delete from user where id=?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			
+			ps.setInt(1, id);
+			
+			ps.executeUpdate();
+			System.out.println("Successfully deleted!");
+				
+		}catch(Exception e) {
+			System.out.println(e +"data delete unsuccess.");
+		}
+		
+		return id;
+	
+	}
+	
 	
 	
 

@@ -7,6 +7,7 @@ import org.restapi.crud.ElectroGrid.model.crudmodel;
 import org.restapi.crud.ElectroGrid.service.crudservice;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -50,5 +51,12 @@ public class crudresource {
 		return service.updateUser(user);
 	}
 	
+	@Path("/deleteUserById/{id}")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public int deleteUser(@PathParam("id") int id) {
+		
+		return service.deleteUser(id);
+	}
 
 }
