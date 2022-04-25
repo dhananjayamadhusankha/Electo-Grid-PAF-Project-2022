@@ -3,6 +3,9 @@ package org.restapi.crud.emp.service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.restapi.crud.emp.model.empmodel;
 
@@ -44,5 +47,33 @@ public empmodel insertEmp (empmodel emp) {
 	}
 	
 	return emp;
-}
+	}
+
+	//retrieve all data
+
+	public ArrayList<empmodel> getEmp() throws SQLException {
+		
+		ArrayList<empmodel>  data = new ArrayList<empmodel>();
+		
+		String select = "select * from employee";
+		
+		PreparedStatement ps = con.prepareStatement(select);
+		ResultSet rs = ps.executeQuery();
+		
+		while (rs.next()) {
+			empmodel emp = new empmodel();
+			
+			emp.setName(rs.getString("name"));
+			emp.setAge(rs.getInt("age"));
+			emp.setAddress(rs.getString("address"));
+			emp.setEmail(rs.getString("email"));
+			emp.setTelno(rs.getString("telno"));
+			emp.setType(rs.getString("type"));
+			
+			data.add(emp);
+		}
+		
+		return data;
+	}
+
 }
