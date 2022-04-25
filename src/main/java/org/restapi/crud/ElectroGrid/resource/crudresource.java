@@ -40,5 +40,15 @@ public class crudresource {
 		
 		return service.getUserById(id);
 	}
+	
+
+	@Path("/updateUser")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public crudmodel updateUser(crudmodel user) {
+		
+		return service.updateUser(user);
+	}
+	
 
 }

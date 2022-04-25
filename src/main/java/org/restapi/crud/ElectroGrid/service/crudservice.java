@@ -96,6 +96,32 @@ public class crudservice {
 	} 
 	
 	
+	public crudmodel updateUser(crudmodel user) {
+		String insert = "update user set name=?, email=?, address=?, phoneno=?, type=? "
+				+ "where id=?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getEmail());
+			ps.setString(3, user.getAddress());
+			ps.setString(4, user.getPhoneno());
+			ps.setString(5, user.getType());
+			ps.setInt(6, user.getId());
+			
+			ps.executeUpdate();
+			System.out.println("Successfully added!");
+				
+		}catch(Exception e) {
+			System.out.println(e +"data update unsuccess.");
+		}
+		
+		return user;
+	
+	}
+	
+	
 	
 
 }
