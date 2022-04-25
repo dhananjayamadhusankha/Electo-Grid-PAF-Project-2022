@@ -10,6 +10,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/emp")
@@ -31,4 +32,13 @@ public class empresourse {
 		public ArrayList<empmodel> getEmp() throws SQLException {
 			return service.getEmp();
 		}
+		
+	// searching  employee details
+	@Path("/retrieveById/{empId}")
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ArrayList<empmodel> getEmp (@PathParam("empId") int empId) throws SQLException{
+		
+		return service.getEmpById(empId);
+	}
 }

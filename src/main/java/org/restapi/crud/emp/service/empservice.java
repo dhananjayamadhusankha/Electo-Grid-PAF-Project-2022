@@ -75,5 +75,32 @@ public empmodel insertEmp (empmodel emp) {
 		
 		return data;
 	}
+	
+	//search by id
+		public ArrayList<empmodel> getEmpById (int empId) throws SQLException{
+			
+			ArrayList<empmodel> data = new ArrayList<empmodel>();
+			
+			String select = "select * from employee where empId = ?";
+			
+			PreparedStatement ps = con.prepareStatement(select);
+			ps.setInt(1, empId);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				empmodel emp = new empmodel();
+		
+				emp.setName(rs.getString("name"));
+				emp.setAge(rs.getInt("age"));
+				emp.setAddress(rs.getString("address"));
+				emp.setEmail(rs.getString("email"));
+				emp.setTelno(rs.getString("telno"));
+				emp.setType(rs.getString("type"));
+				
+				data.add(emp);
+			}
+			
+			return data;
+		}
 
 }
