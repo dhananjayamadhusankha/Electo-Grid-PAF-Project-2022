@@ -3,6 +3,9 @@ package org.restapi.crud.power.service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.restapi.crud.power.model.powermodel;
 
@@ -49,6 +52,33 @@ public class powerservice {
 		
 		return power;
 	}
+	
+	//retrieve all data
+	public ArrayList<powermodel> getPower() throws SQLException{
+		
+		ArrayList<powermodel> data = new ArrayList<powermodel>();
+		
+		String select = "select * from power";
+		
+		PreparedStatement ps = con.prepareStatement(select);
+		ResultSet rs = ps.executeQuery();
+		
+		while (rs.next()) {
+			
+			powermodel power = new powermodel();
+			
+			power.setCusname(rs.getString("cusname"));
+			power.setpAccNo(rs.getString("pAccNo"));
+			power.setPsUnit(rs.getInt("psUnit"));
+			power.setpDate(rs.getString("pDate"));
+			power.setpAmout(rs.getDouble("pAmout"));
+			
+			data.add(power);
+		}
+		
+		return data;
+	}
+	
 
 
 }
