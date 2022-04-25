@@ -13,33 +13,28 @@ public class crudservice {
 	public crudservice()  {
 		
 		try {
-			String url =String.format("jdbc:mysql://localhost/electrodb");
-			String uname ="root";
-			String pwd ="root";
-			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection(url,uname,pwd);
-			
-			
-		} catch (Exception e) {
-			System.out.println(e + "data insert unsucess");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/electrodb", "root","");
+			System.out.println("Success");
+		}
+		catch(Exception e) {
+			System.out.println(e +"data insert unsuccess.");
 		}
 	}
 	
 	public crudmodel insertUser(crudmodel user) {
-		String insert = "insert into user(id, name, email, address, phoneno, type) values(?,?,?,?,?,?) ";
+		String insert = "insert into user(name, email, address, phoneno, type) values(?,?,?,?,?) ";
 		
 		try {
-		PreparedStatement ps = con.prepareStatement(insert);
-				ps.setInt(1, user.getId());
-				ps.setString(2, user.getName());
-				ps.setString(3, user.getEmail());
-				ps.setString(4, user.getAddress());
-				ps.setString(5, user.getPhoneno());
-				ps.setString(6, user.getType());
-				
-				ps.execute();
-				System.out.println("Successfully added!");
+			PreparedStatement ps = con.prepareStatement(insert);
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getEmail());
+			ps.setString(3, user.getAddress());
+			ps.setString(4, user.getPhoneno());
+			ps.setString(5, user.getType());
+			
+			ps.execute();
+			System.out.println("Successfully added!");
 				
 		}catch(Exception e) {
 			System.out.println(e +"data insert unsuccess.");
