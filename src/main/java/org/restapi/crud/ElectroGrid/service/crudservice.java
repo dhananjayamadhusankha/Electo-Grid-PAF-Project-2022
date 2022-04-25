@@ -67,7 +67,34 @@ public class crudservice {
 		}
 		
 		return data;
-	}
+	} 
+	
+	
+	public ArrayList<crudmodel> getUserById(int id) throws SQLException{
+			
+			ArrayList<crudmodel> data = new ArrayList<crudmodel>();
+			
+			String select = "select * from user where id = ?";
+	
+			PreparedStatement ps = con.prepareStatement(select);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				crudmodel model = new crudmodel();
+				
+				model.setName(rs.getString("name"));
+				model.setEmail(rs.getString("email"));
+				model.setAddress(rs.getString("address"));
+				model.setPhoneno(rs.getString("phoneno"));
+				model.setType(rs.getString("type"));
+				
+				data.add(model);
+			}
+			
+			return data;
+	} 
+	
 	
 	
 

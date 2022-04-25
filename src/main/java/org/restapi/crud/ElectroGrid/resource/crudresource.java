@@ -7,8 +7,10 @@ import org.restapi.crud.ElectroGrid.model.crudmodel;
 import org.restapi.crud.ElectroGrid.service.crudservice;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/crud")
@@ -24,11 +26,19 @@ public class crudresource {
 	}
 	
 	@Path("/retrieve")
-	@POST
+	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
 	public ArrayList<crudmodel> getUser() throws SQLException {
 		
 		return service.getUser();
+	}
+	
+	@Path("/retrieveById/{id}")
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ArrayList<crudmodel> getUser(@PathParam("id") int id) throws SQLException {
+		
+		return service.getUserById(id);
 	}
 
 }
