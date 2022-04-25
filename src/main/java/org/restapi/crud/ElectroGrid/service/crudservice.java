@@ -13,6 +13,7 @@ public class crudservice {
 	
 	public crudservice()  {
 		
+		//Database Connection
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost/electrodb", "root","");
@@ -23,9 +24,13 @@ public class crudservice {
 		}
 	}
 	
+	//Add details about the user
 	public crudmodel insertUser(crudmodel user) {
+		
+		// create a prepared statement
 		String insert = "insert into user(name, email, address, phoneno, type) values(?,?,?,?,?) ";
 		
+		// binding values to user table
 		try {
 			PreparedStatement ps = con.prepareStatement(insert);
 			ps.setString(1, user.getName());
@@ -34,6 +39,7 @@ public class crudservice {
 			ps.setString(4, user.getPhoneno());
 			ps.setString(5, user.getType());
 			
+			//execute the statement
 			ps.execute();
 			System.out.println("Successfully added!");
 				
@@ -45,6 +51,7 @@ public class crudservice {
 	
 	}
 	
+	//retrieve all data
 	public ArrayList<crudmodel> getUser() throws SQLException{
 		
 		ArrayList<crudmodel> data = new ArrayList<crudmodel>();
@@ -69,7 +76,7 @@ public class crudservice {
 		return data;
 	} 
 	
-	
+	//search by id
 	public ArrayList<crudmodel> getUserById(int id) throws SQLException{
 			
 			ArrayList<crudmodel> data = new ArrayList<crudmodel>();
@@ -96,10 +103,14 @@ public class crudservice {
 	} 
 	
 	
+	//Update the user details
 	public crudmodel updateUser(crudmodel user) {
+		
+		// create a prepared statement
 		String insert = "update user set name=?, email=?, address=?, phoneno=?, type=? "
 				+ "where id=?";
 		
+		// binding values to query
 		try {
 			PreparedStatement ps = con.prepareStatement(insert);
 			
@@ -110,10 +121,11 @@ public class crudservice {
 			ps.setString(5, user.getType());
 			ps.setInt(6, user.getId());
 			
+			// Execute the statement
 			ps.executeUpdate();
-			System.out.println("Successfully added!");
+			System.out.println("Successfully Updated!");
 				
-		}catch(Exception e) {
+		} catch(Exception e) {
 			System.out.println(e +"data update unsuccess.");
 		}
 		
@@ -121,7 +133,10 @@ public class crudservice {
 	
 	}
 	
+	// implement the delete payment
 	public int deleteUser(int id) {
+		
+		// create a prepared statement
 		String insert = "delete from user where id=?";
 		
 		try {
@@ -129,6 +144,7 @@ public class crudservice {
 			
 			ps.setInt(1, id);
 			
+			// executing the statements
 			ps.executeUpdate();
 			System.out.println("Successfully deleted!");
 				
@@ -139,8 +155,5 @@ public class crudservice {
 		return id;
 	
 	}
-	
-	
-	
 
 }

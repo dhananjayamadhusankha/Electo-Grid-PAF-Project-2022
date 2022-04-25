@@ -10,6 +10,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
@@ -19,13 +20,15 @@ public class crudresource {
 	
 	crudservice service = new crudservice();
 	
-	@Path("/insertion")
+	//create user details
+	@Path("/insert")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public crudmodel addUser(crudmodel user) {
 		return service.insertUser(user);
 	}
 	
+	// reading user details
 	@Path("/retrieve")
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -34,6 +37,7 @@ public class crudresource {
 		return service.getUser();
 	}
 	
+	// searching  user details
 	@Path("/retrieveById/{id}")
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -43,14 +47,16 @@ public class crudresource {
 	}
 	
 
+	//update user details 
 	@Path("/updateUser")
-	@POST
+	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public crudmodel updateUser(crudmodel user) {
 		
 		return service.updateUser(user);
 	}
 	
+	//delete user details
 	@Path("/deleteUserById/{id}")
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
