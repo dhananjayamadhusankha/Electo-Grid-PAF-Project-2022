@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <wb-module deploy-name="payment">
 =======
     <wb-module deploy-name="user">
@@ -8,10 +9,14 @@
 =======
     <wb-module deploy-name="power">
 >>>>>>> IT20107178
+=======
+    <wb-module deploy-name="complain">
+>>>>>>> IT20121624
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         <property name="context-root" value="payment"/>
@@ -24,5 +29,9 @@
         <property name="context-root" value="power"/>
         <property name="java-output-path" value="/power/target/classes"/>
 >>>>>>> IT20107178
+=======
+        <property name="context-root" value="complain"/>
+        <property name="java-output-path" value="/complain/target/classes"/>
+>>>>>>> IT20121624
     </wb-module>
 </project-modules>

@@ -9,6 +9,7 @@
             <param-name>jersey.config.server.provider.packages</param-name>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <param-value>org.restapi.crud.payment</param-value>
 =======
             <param-value>org.restapi.crud.user</param-value>
@@ -16,6 +17,9 @@
 =======
             <param-value>org.restapi.crud.power</param-value>
 >>>>>>> IT20107178
+=======
+            <param-value>org.restapi.crud.complain</param-value>
+>>>>>>> IT20121624
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
