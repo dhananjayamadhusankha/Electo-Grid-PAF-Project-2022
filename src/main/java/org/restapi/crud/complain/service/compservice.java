@@ -4,8 +4,12 @@ package org.restapi.crud.complain.service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.restapi.crud.complain.model.compmodel;
+
 
 public class compservice {
 	
@@ -50,5 +54,30 @@ Connection con;
 		return comp;
 	}
 	
-
+	//retrieve all data
+		public ArrayList<compmodel> getComp() throws SQLException{
+			
+			ArrayList<compmodel> data = new ArrayList<compmodel>();
+			
+			String select = "select * from complain";
+			
+			PreparedStatement ps = con.prepareStatement(select);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				
+				compmodel comp = new compmodel();
+				
+				comp.setCusId(rs.getInt("cusId"));
+				comp.setCusName(rs.getString("cusName"));
+				comp.setDate(rs.getString("date"));
+				comp.setCompType(rs.getString("compType"));
+				comp.setCompDcription(rs.getString("compDcription"));
+				
+				data.add(comp);
+			}
+			
+			return data;
+			
+		}
 }
