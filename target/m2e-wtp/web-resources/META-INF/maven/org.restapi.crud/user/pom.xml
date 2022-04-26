@@ -4,15 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.restapi.crud</groupId>
-<<<<<<< HEAD
-    <artifactId>payment</artifactId>
-    <packaging>war</packaging>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>payment</name>
-
-    <build>
-        <finalName>payment</finalName>
-=======
     <artifactId>user</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
@@ -20,7 +11,6 @@
 
     <build>
         <finalName>user</finalName>
->>>>>>> IT20116392
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
