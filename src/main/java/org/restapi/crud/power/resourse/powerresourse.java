@@ -28,7 +28,7 @@ public class powerresourse {
 			return service.insertPower(power);
 		}
 		
-	// reading user details
+	// reading PowerUnit details
 	@Path("/")
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -55,12 +55,11 @@ public class powerresourse {
 	}
 	
 	//delete user details
-		@Path("/{powerId}")
-		@DELETE
-		@Consumes(MediaType.APPLICATION_JSON)
-		public int deletePower (@PathParam("powerId") int powerId) {
-			return service.deletePower(powerId);
-		}
-		
-
+	@Path("/{powerId}")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public int deletePower (@PathParam("powerId") int powerId) {
+		return service.deletePower(powerId);
+	}
+	
 }

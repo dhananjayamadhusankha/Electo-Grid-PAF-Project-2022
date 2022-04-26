@@ -134,7 +134,7 @@ public class powerservice {
 	}
 	
 	
-	// implement the delete payment
+	// implement the delete power
 	public int deletePower (int powerId) {
 		
 	// create a prepared statement
