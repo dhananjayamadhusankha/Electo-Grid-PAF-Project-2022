@@ -107,4 +107,33 @@ Connection con;
 			return data;
 		}
 		
+		//Update the power details
+		public compmodel updateComp (compmodel comp) {
+			
+		// create a prepared statement
+		String insert = "update complain set cusId=?, cusName=?, date=?, compType=?, compDcription=?"
+				+ "where compId=?";
+		
+		// binding values to query
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			
+			ps.setInt(1, comp.getCusId());
+			ps.setString(2, comp.getCusName());
+			ps.setString(3, comp.getDate());
+			ps.setString(4, comp.getCompType());
+			ps.setString(5, comp.getCompDcription());
+			ps.setInt(6, comp.getCompid());
+			
+			// Execute the statement
+			ps.executeUpdate();
+			System.out.println("Successfully Updated!");
+			
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return comp;
+		}
+		
+		
 }

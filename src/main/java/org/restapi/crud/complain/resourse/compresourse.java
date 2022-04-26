@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import org.restapi.crud.complain.model.compmodel;
 import org.restapi.crud.complain.service.compservice;
 
+
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
@@ -43,7 +45,13 @@ public class compresourse {
 			
 			return service.getCompById(compid);
 		}
-
+		//update power details 
+		@Path("/")
+		@PUT
+		@Consumes(MediaType.APPLICATION_JSON)
+		public compmodel updateComp(compmodel comp) {
+			return service.updateComp(comp);
+		}
 		
 		
 		
