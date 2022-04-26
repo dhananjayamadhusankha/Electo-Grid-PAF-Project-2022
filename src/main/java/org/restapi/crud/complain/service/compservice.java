@@ -80,4 +80,31 @@ Connection con;
 			return data;
 			
 		}
+		
+		//search by id
+		public ArrayList<compmodel> getCompById(int compid) throws SQLException{
+			
+			ArrayList<compmodel> data = new ArrayList<compmodel>();
+				
+			String select = "select * from complain where compid = ?";
+			
+			PreparedStatement ps = con.prepareStatement(select);
+			ps.setInt(1, compid);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				compmodel model = new compmodel();
+				
+				model.setCusId(rs.getInt("cusId"));
+				model.setCusName(rs.getString("cusName"));
+				model.setDate(rs.getString("date"));
+				model.setCompType(rs.getString("compType"));
+				model.setCompDcription(rs.getString("compDcription"));
+				
+				data.add(model);
+			}
+			
+			return data;
+		}
+		
 }

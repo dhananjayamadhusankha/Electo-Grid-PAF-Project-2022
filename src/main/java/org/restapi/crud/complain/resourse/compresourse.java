@@ -10,6 +10,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/comp")
@@ -26,7 +27,7 @@ public class compresourse {
 
 	}
 	
-	// reading PowerUnit details
+	// reading complain details
 		@Path("/")
 		@GET
 		@Consumes(MediaType.APPLICATION_JSON)
@@ -34,5 +35,16 @@ public class compresourse {
 			
 			return service.getComp();
 		}
+		// searching  power details
+		@Path("/{compid}")
+		@GET
+		@Consumes(MediaType.APPLICATION_JSON)
+		public ArrayList<compmodel> getCompmodels (@PathParam("compid") int compid) throws SQLException {
+			
+			return service.getCompById(compid);
+		}
 
+		
+		
+		
 }
