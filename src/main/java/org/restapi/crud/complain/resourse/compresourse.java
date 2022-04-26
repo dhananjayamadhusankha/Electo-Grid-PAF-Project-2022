@@ -8,6 +8,7 @@ import org.restapi.crud.complain.service.compservice;
 
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -53,6 +54,13 @@ public class compresourse {
 			return service.updateComp(comp);
 		}
 		
+		//delete user details
+		@Path("/{compid}")
+		@DELETE
+		@Consumes(MediaType.APPLICATION_JSON)
+		public int deleteComp (@PathParam("compid") int compid) {
+			return service.deleteComp(compid);
+		}
 		
 		
 }

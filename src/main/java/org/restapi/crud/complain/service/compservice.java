@@ -107,12 +107,12 @@ Connection con;
 			return data;
 		}
 		
-		//Update the power details
+		//Update the Complain details
 		public compmodel updateComp (compmodel comp) {
 			
 		// create a prepared statement
 		String insert = "update complain set cusId=?, cusName=?, date=?, compType=?, compDcription=?"
-				+ "where compId=?";
+				+ "where compid=?";
 		
 		// binding values to query
 		try {
@@ -133,6 +133,29 @@ Connection con;
 				// TODO: handle exception
 			}
 			return comp;
+		}
+		
+		// implement the delete power
+		public int deleteComp (int compid) {
+			
+		// create a prepared statement
+		String insert = "delete from complain where compid=?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			
+			ps.setInt(1, compid);
+			
+			// executing the statements
+			ps.executeUpdate();
+			System.out.println("Successfully deleted!");
+				
+		} catch(Exception e) {
+			System.out.println(e +"data delete unsuccess.");
+		}
+		
+		return compid;
+		
 		}
 		
 		
