@@ -132,5 +132,29 @@ public class powerservice {
 		}
 		return power;
 	}
+	
+	
+	// implement the delete payment
+	public int deletePower (int powerId) {
+		
+	// create a prepared statement
+	String insert = "delete from power where powerId=?";
+	
+	try {
+		PreparedStatement ps = con.prepareStatement(insert);
+		
+		ps.setInt(1, powerId);
+		
+		// executing the statements
+		ps.executeUpdate();
+		System.out.println("Successfully deleted!");
+			
+	} catch(Exception e) {
+		System.out.println(e +"data delete unsuccess.");
+	}
+	
+	return powerId;
+	
+	}
 
 }

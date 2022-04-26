@@ -7,6 +7,7 @@ import org.restapi.crud.power.model.powermodel;
 import org.restapi.crud.power.service.powerservice;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -52,6 +53,14 @@ public class powerresourse {
 	public powermodel updatePower(powermodel power) {
 		return service.updatePower(power);
 	}
+	
+	//delete user details
+		@Path("/{powerId}")
+		@DELETE
+		@Consumes(MediaType.APPLICATION_JSON)
+		public int deletePower (@PathParam("powerId") int powerId) {
+			return service.deletePower(powerId);
+		}
 		
 
 }
