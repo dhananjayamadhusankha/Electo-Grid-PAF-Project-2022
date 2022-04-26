@@ -133,5 +133,27 @@ public empmodel insertEmp (empmodel emp) {
 		return emp;
 	}
 			
+	
+	// implement the delete employee
+		public int deleteEmp (int empId) {
+		// create a prepared statement
+		String insert = "delete from employee where empId=?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			
+			ps.setInt(1, empId);
+			
+			// executing the statements
+			ps.executeUpdate();
+			System.out.println("Successfully deleted!");
+				
+		} catch(Exception e) {
+			System.out.println(e +"data delete unsuccess.");
+		}
+		
+		return empId;
+		
+		}
 
 }

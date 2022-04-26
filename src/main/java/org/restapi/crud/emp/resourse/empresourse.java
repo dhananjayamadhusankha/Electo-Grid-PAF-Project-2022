@@ -7,6 +7,7 @@ import org.restapi.crud.emp.model.empmodel;
 import org.restapi.crud.emp.service.empservice;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -49,5 +50,14 @@ public class empresourse {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public empmodel updateEmp(empmodel emp) {
 		return service.updateEmp(emp);
+	}
+	
+	//delete user details
+	@Path("/{empId}")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public int deleteEmp (@PathParam("empId") int empId) {
+		
+		return service.deleteEmp(empId);
 	}
 }
