@@ -10,6 +10,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/power")
@@ -32,6 +33,15 @@ public class powerresourse {
 	public ArrayList<powermodel> getPower() throws SQLException {
 		
 		return service.getPower();
+	}
+	
+	// searching  user details
+	@Path("/{powerId}")
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ArrayList<powermodel> getPowermodels (@PathParam("powerId") int powerId) throws SQLException {
+		
+		return service.getPowerById(powerId);
 	}
 
 }

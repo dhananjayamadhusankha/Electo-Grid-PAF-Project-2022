@@ -79,6 +79,31 @@ public class powerservice {
 		return data;
 	}
 	
-
+	
+	//search by id
+	public ArrayList<powermodel> getPowerById(int powerId) throws SQLException{
+		
+		ArrayList<powermodel> data = new ArrayList<powermodel>();
+			
+		String select = "select * from power where powerId = ?";
+		
+		PreparedStatement ps = con.prepareStatement(select);
+		ps.setInt(1, powerId);
+		ResultSet rs = ps.executeQuery();
+		
+		while (rs.next()) {
+			powermodel model = new powermodel();
+			
+			model.setCusname(rs.getString("cusname"));
+			model.setpAccNo(rs.getString("pAccNo"));
+			model.setPsUnit(rs.getInt("psUnit"));
+			model.setpDate(rs.getString("pDate"));
+			model.setpAmout(rs.getDouble("pAmout"));
+			
+			data.add(model);
+		}
+		
+		return data;
+	}
 
 }
