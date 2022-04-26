@@ -10,6 +10,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <param-value>org.restapi.crud.payment</param-value>
 =======
             <param-value>org.restapi.crud.user</param-value>
@@ -20,6 +21,9 @@
 =======
             <param-value>org.restapi.crud.complain</param-value>
 >>>>>>> IT20121624
+=======
+            <param-value>org.restapi.crud.emp</param-value>
+>>>>>>> IT20050030
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

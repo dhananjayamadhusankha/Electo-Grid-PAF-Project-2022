@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <wb-module deploy-name="payment">
 =======
     <wb-module deploy-name="user">
@@ -12,10 +13,14 @@
 =======
     <wb-module deploy-name="complain">
 >>>>>>> IT20121624
+=======
+    <wb-module deploy-name="emp">
+>>>>>>> IT20050030
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -33,5 +38,9 @@
         <property name="context-root" value="complain"/>
         <property name="java-output-path" value="/complain/target/classes"/>
 >>>>>>> IT20121624
+=======
+        <property name="context-root" value="emp"/>
+        <property name="java-output-path" value="/emp/target/classes"/>
+>>>>>>> IT20050030
     </wb-module>
 </project-modules>
