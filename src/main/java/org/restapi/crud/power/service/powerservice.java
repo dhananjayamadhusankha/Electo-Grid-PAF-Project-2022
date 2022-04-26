@@ -41,7 +41,6 @@ public class powerservice {
 			ps.setString(4, power.getpDate());
 			ps.setDouble(5, power.getpAmout());
 			
-			
 			//execute the statement
 			ps.execute();
 			System.out.println("Successfully added!");
@@ -104,6 +103,34 @@ public class powerservice {
 		}
 		
 		return data;
+	}
+	
+	//Update the power details
+	public powermodel updatePower (powermodel power) {
+		
+	// create a prepared statement
+	String insert = "update power set cusname=?, pAccNo=?, psUnit=?, pDate=?, pAmout=?"
+			+ "where powerId=?";
+	
+	// binding values to query
+	try {
+		PreparedStatement ps = con.prepareStatement(insert);
+			
+		ps.setString(1, power.getCusname());
+		ps.setString(2, power.getpAccNo());
+		ps.setLong(3, power.getPsUnit());
+		ps.setString(4, power.getpDate());
+		ps.setDouble(5, power.getpAmout());
+		ps.setInt(6, power.getPowerId());
+		
+		// Execute the statement
+		ps.executeUpdate();
+		System.out.println("Successfully Updated!");
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return power;
 	}
 
 }

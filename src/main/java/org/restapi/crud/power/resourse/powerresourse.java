@@ -9,6 +9,7 @@ import org.restapi.crud.power.service.powerservice;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
@@ -35,7 +36,7 @@ public class powerresourse {
 		return service.getPower();
 	}
 	
-	// searching  user details
+	// searching  power details
 	@Path("/{powerId}")
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -43,5 +44,14 @@ public class powerresourse {
 		
 		return service.getPowerById(powerId);
 	}
+	
+	//update power details 
+	@Path("/")
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	public powermodel updatePower(powermodel power) {
+		return service.updatePower(power);
+	}
+		
 
 }
