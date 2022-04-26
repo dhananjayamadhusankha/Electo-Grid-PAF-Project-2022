@@ -120,6 +120,7 @@ public empmodel insertEmp (empmodel emp) {
 			ps.setString(4, emp.getEmail());
 			ps.setString(5, emp.getTelno());
 			ps.setString(6, emp.getType());
+			ps.setInt(7, emp.getEmpId());
 			
 			// Execute the statement
 			ps.executeUpdate();

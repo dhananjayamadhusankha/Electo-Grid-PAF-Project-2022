@@ -19,7 +19,7 @@ public class empresourse {
 	
 	empservice service = new empservice();
 	
-	@Path("/insert")
+	@Path("/")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public empmodel addEmp(empmodel emp) {
@@ -27,15 +27,15 @@ public class empresourse {
 	}
 
 	// reading employee details
-		@Path("/retrieve")
-		@GET
-		@Consumes(MediaType.APPLICATION_JSON)
-		public ArrayList<empmodel> getEmp() throws SQLException {
-			return service.getEmp();
-		}
+	@Path("/")
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	public ArrayList<empmodel> getEmp() throws SQLException {
+		return service.getEmp();
+	}
 		
 	// searching  employee details
-	@Path("/retrieveById/{empId}")
+	@Path("/{empId}")
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
 	public ArrayList<empmodel> getEmp (@PathParam("empId") int empId) throws SQLException{
@@ -44,10 +44,10 @@ public class empresourse {
 	}
 	
 	//update user details 
-		@Path("/updateEmp")
-		@PUT
-		@Consumes(MediaType.APPLICATION_JSON)
-		public empmodel updateEmp(empmodel emp) {
-			return service.updateEmp(emp);
-		}
+	@Path("/")
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	public empmodel updateEmp(empmodel emp) {
+		return service.updateEmp(emp);
+	}
 }
